@@ -1,0 +1,38 @@
+*{
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(30, 30, 43);
+}
+.home-container{
+  display: flex;
+  flex-direction: column;
+}
+.navlk{
+  text-decoration: none;
+}
+.display-2{
+  color: rgb(198, 198, 227);
+}
+.form-container{
+  font-size: 1.3rem;
+  margin: 40px;
+  min-width: 320px;
+  max-width: 480px;
+}
+.form-control{
+  font-size: 1.3rem;
+}
+.error{
+  color : red;
+  font-style: italic;
+  font-size: 1rem
+}
+.field-icon {
+  float: right;
+  padding-right: 33px;
+  margin-top: -29px;
+  position: relative;
+  z-index: 2;
+  color: grey;
+  background: transparent;
+}
