@@ -1,29 +1,24 @@
-import React, { useEffect, useState, Component } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import "../styles/depenses.scss";
 import { db } from "./FirebaseConfig";
 import Modal from "../components/Modale";
 import {
   doc,
-  onSnapshot,
+  addDoc,
   updateDoc,
-  setDoc,
   deleteDoc,
   collection,
-  serverTimestamp,
   getDocs,
   query,
-  where,
   orderBy,
-  limit,
 } from "firebase/firestore";
-import { AuthContext } from "./FirebaseConfig";
 
 const SnapshotDepenses = () => {
   const [depenses, setDepenses] = useState([]);
   const depensesCollectionRef = collection(db, "depenses");
   const [natureDepenses, setNatureDepenses] = useState("");
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState("false");
   const [idItem, setIdItem] = useState("");
 
   useEffect(() => {
@@ -37,20 +32,30 @@ const SnapshotDepenses = () => {
   }, [depensesCollectionRef]);
 
   //**********  MODIFIER ********** */
-  const modifier = () => {
+  const modifier = async (x) => {
     const data = { nature: "?" };
-    setShowModal(true);
-    data.nature = natureDepenses;
+    data.nature = x;
 
-    console.log("item ", data.nature, "   id  ", idItem);
+    console.log("data nature ", data.nature, "   id  ", idItem);
     const lequel = doc(depensesCollectionRef, idItem);
-    updateDoc(lequel, data);
+    await updateDoc(lequel, data);
+    setShowModal("false");
   };
 
-  const supprimer = (id) => {
-    let lequel = doc(depensesCollectionRef, id);
-    // deleteDoc(lequel);
+  const supprimer = async (id) => {
+    const lequel = doc(depensesCollectionRef, id);
+    await deleteDoc(lequel);
     // console.log("item ", lequel);
+    setShowModal("false");
+  };
+
+  const ajouter = async (newItem) => {
+    // console.log("item ajouté  ", newItem);
+    setShowModal("false");
+    const depensesRef = await addDoc(collection(db, "depenses"), {
+      nature: newItem,
+    });
+    console.log(" nouveau doc id = ", depensesRef.id);
   };
 
   return (
@@ -59,17 +64,18 @@ const SnapshotDepenses = () => {
       <Modal
         leQuel={natureDepenses}
         show={showModal}
-        onValid={() => {
-          modifier();
-          // setShowModal(false);
+        onValid={(x) => {
+          modifier(x);
+        }}
+        onNewDonnees={(newItem) => {
+          ajouter(newItem);
         }}
         onDelete={() => {
-          setShowModal(false);
+          supprimer(idItem);
         }}
         onClose={() => {
-          setShowModal(false);
+          setShowModal("false");
         }}
-        okChange={setNatureDepenses}
       >
         <p>Modal</p>
       </Modal>
@@ -82,11 +88,11 @@ const SnapshotDepenses = () => {
               <li
                 className="ligne"
                 key={item.id}
-                // onClick={() => cliquer(item.id, item.nature)}
                 onClick={() => {
-                  setShowModal(true);
                   setNatureDepenses(item.nature);
                   setIdItem(item.id);
+                  // console.log("clické sur ", item.nature);
+                  setShowModal("true");
                 }}
                 show={showModal}
               >

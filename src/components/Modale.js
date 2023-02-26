@@ -3,13 +3,14 @@ import "../styles/modal.scss";
 
 const Modal = (props) => {
   const [leTexte, setText] = useState("");
+
   const changement = (e) => {
     setText(e.target.value);
-    props.okChange(leTexte);
+    // console.log("item modal ", props.lequel, "   texte  ", leTexte);
   };
 
   //*** on n'affiche pas la modal */
-  if (!props.show) {
+  if (props.show === "false") {
     return null;
   }
 
@@ -29,7 +30,7 @@ const Modal = (props) => {
             className="input-text"
             id="in-text"
             defaultValue={props.leQuel}
-            onChange={changement}
+            onInput={changement}
           />
         </div>
         <div className="modal-footer">
@@ -40,16 +41,34 @@ const Modal = (props) => {
             type="submit"
             className="button-valid"
             onClick={() => {
-              props.okChange(leTexte);
-              props.onValid();
+              const x = document.getElementById("in-text").value;
+              // console.log(" x = ", x);
+
+              setText("");
+              document.getElementById("in-text").value = "";
+              props.onValid(x);
             }}
           >
             {leTexte !== "" ? "Valider" : "Modifier"}
           </button>
-          <button className="button-delete" onClick={props.onDelete}>
+          <button
+            className="button-delete"
+            onClick={() => {
+              const x = document.getElementById("in-text").value;
+              console.log(" delete  = ", x);
+              props.onDelete(x);
+            }}
+          >
             Supprimer
           </button>
-          <button className="button-ajouter" onClick={props.onNewData}>
+          <button
+            className="button-ajouter"
+            onClick={() => {
+              const x = document.getElementById("in-text").value;
+              console.log(" ajouter  = ", x);
+              props.onNewDonnees(x);
+            }}
+          >
             Ajouter
           </button>
         </div>
