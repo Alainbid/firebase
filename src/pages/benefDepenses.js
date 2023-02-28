@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import "../styles/depenses.scss";
+import "../styles/setting.scss";
+import "../styles/app.scss";
+
 import { db } from "./FirebaseConfig";
 import Modal from "../components/Modale";
 import {
@@ -20,6 +23,8 @@ const SnapshotDepenses = () => {
   const [natureDepenses, setNatureDepenses] = useState("");
   const [showModal, setShowModal] = useState("false");
   const [idItem, setIdItem] = useState("");
+
+  const [modalPosition, setModalPosition] = useState([0, 0]);
 
   useEffect(() => {
     const getDepenses = async () => {
@@ -62,6 +67,8 @@ const SnapshotDepenses = () => {
     <div>
       <Navbar></Navbar>
       <Modal
+        posdex={modalPosition[0]}
+        posdey={modalPosition[1]}
         leQuel={natureDepenses}
         show={showModal}
         onValid={(x) => {
@@ -80,15 +87,25 @@ const SnapshotDepenses = () => {
         <p>Modal</p>
       </Modal>
       <div className="depenses-container">
-        <h3 className="display-2">Gestion des dépenses</h3>
+        <h3>Liste des dépenses</h3>
 
         <div className="depenses-table">
           {depenses.map((item, index) => {
             return (
               <li
                 className="ligne"
+                posdex={modalPosition[0]}
+                posdey={modalPosition[1]}
                 key={item.id}
-                onClick={() => {
+                onClick={(event) => {
+                  console.log(" x ", event.clientX, "   y = ", event.clientY);
+                  setModalPosition([event.clientX, event.clientY]);
+                  console.log(
+                    " x ",
+                    modalPosition[0],
+                    "   y = ",
+                    modalPosition[1]
+                  );
                   setNatureDepenses(item.nature);
                   setIdItem(item.id);
                   // console.log("clické sur ", item.nature);

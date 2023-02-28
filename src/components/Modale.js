@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import "../styles/modal.scss";
+import "../styles/setting.scss";
 
 const Modal = (props) => {
   const [leTexte, setText] = useState("");
-
+  // const pox = `"` + props.posdey + `px"`;
   const changement = (e) => {
     setText(e.target.value);
     // console.log("item modal ", props.lequel, "   texte  ", leTexte);
@@ -16,15 +17,20 @@ const Modal = (props) => {
 
   //*********                   */
   return (
-    <div className="modal">
-      <div className="modal-content">
+    <div className="modal-overlay">
+      <div
+        className="modal-content"
+        style={{
+          top: `"` + props.posdey + `px"`,
+          left: `"` + props.posdex + `px"`,
+        }}
+      >
         <div className="modal-header">
-          <h4 className="modal-tittle"> Modal titre</h4>
+          <h4 className="modal-tittle"> Modifier la liste des dépenses</h4>
         </div>
 
         <div className="modal-body">
-          {" "}
-          Type de dépense
+          Sélection
           <input
             type="text"
             className="input-text"
