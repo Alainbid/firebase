@@ -12,11 +12,14 @@ const Navbarre = () => {
         <NavLink to="/SignInPage" className="navlk">
           Sign-IN
         </NavLink>
-        <NavLink to="/SignUpPage" className="navlk">
+        {/* <NavLink to="/SignUpPage" className="navlk">
           Sign_UP
-        </NavLink>
+        </NavLink> */}
         <NavLink to="/Depenses" className="navlk">
           Dépenses
+        </NavLink>
+        <NavLink to="/Beneficiaires" className="navlk">
+          Bénéficiaires
         </NavLink>
       </div>
     </div>

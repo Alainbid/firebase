@@ -1,14 +1,15 @@
-import Navbar from "../components/Navbar";
+import { useState } from "react";
+import Navbarre from "../components/Navbar";
 import "../styles/home.scss";
 
-const Home = () => {
+function Home() {
+  const [date, setDate] = useState(new Date());
+
   return (
-    <>
-      <Navbar></Navbar>
-      <div className="home-container">
-        <h3 className="display-2">Sign-up or Sign-in</h3>
-      </div>
-    </>
+    <div className="app">
+      <Navbarre />
+      <h1 className="text-center">React Calendar</h1>
+    </div>
   );
-};
+}
 export default Home;

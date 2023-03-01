@@ -4,6 +4,7 @@ import SignIn from "./pages/SignInPage";
 import SignUp from "./pages/SignUpPage";
 import NotFound from "./pages/NotFoundPage";
 import Depenses from "./pages/benefDepenses";
+import Benefs from "./pages/Beneficiaires"
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
         <Route path="/SignInPage" element={<SignIn />}></Route>
         <Route path="/SignUpPage" element={<SignUp />}></Route>
         <Route path="/Depenses" element={<Depenses />}></Route>
+        <Route path="/Beneficiaires" element={<Benefs />}></Route>
 
         <Route path="/*" element={<NotFound />}></Route>
       </Routes>

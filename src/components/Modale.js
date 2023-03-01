@@ -26,7 +26,7 @@ const Modal = (props) => {
         }}
       >
         <div className="modal-header">
-          <h4 className="modal-tittle"> Modifier la liste des dépenses</h4>
+          <h4 className="modal-tittle"> Modifier la liste </h4>
         </div>
 
         <div className="modal-body">
