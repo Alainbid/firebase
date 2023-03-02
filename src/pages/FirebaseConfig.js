@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "@firebase/firestore";
+import {  getFirestore } from "@firebase/firestore";
 
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
@@ -17,7 +17,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
-signInWithEmailAndPassword(auth, "email", "passwd")
+signInWithEmailAndPassword(auth,"michalsarl@aol.com", "xccobb")
   .then((userCredential) => {
     // Signed in
     const user = userCredential.user;
@@ -28,5 +28,7 @@ signInWithEmailAndPassword(auth, "email", "passwd")
     const errorCode = error.code;
     const errorMessage = error.message;
     console.log("code : ", errorCode, "  message ; ", errorMessage);
+    return null;
   });
+  
 export const db = getFirestore(app);

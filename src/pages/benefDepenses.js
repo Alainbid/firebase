@@ -34,7 +34,7 @@ const SnapshotDepenses = () => {
       setDepenses(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     };
     getDepenses();
-  }, [depensesCollectionRef]);
+  },);
 
   //**********  MODIFIER ********** */
   const modifier = async (x) => {
