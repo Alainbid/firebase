@@ -20,10 +20,10 @@ const Modal = (props) => {
     <div className="modal-overlay">
       <div
         className="modal-content"
-        style={{
-          top: `"` + props.posdey + `px"`,
-          left: `"` + props.posdex + `px"`,
-        }}
+        // style={{
+        //   top: `"` + props.posdey + `px"`,
+        //   left: `"` + props.posdex + `px"`,
+        // }}
       >
         <div className="modal-header">
           <h4 className="modal-tittle"> Modifier la liste </h4>

@@ -1,6 +1,4 @@
-
-
-.depenses-container{
+.depenses-container {
   min-width: 400px;
   display: flex;
   background: rgba(57, 70, 82, 0.5);
@@ -8,16 +6,14 @@
   flex-direction: column;
   align-items: center;
 }
-h3{
+h3 {
   font-weight: 400;
   font-size: 1.8rem;
-  padding: 20px;
   margin-top: 5px;
-  background-color: #394652;
-  border-radius: 16px;
-  /* font-family: inherit; */
+  display: flex;
+  justify-content: center;
 }
-.depenses-table{
+.depenses-table {
   z-index: 1000;
   min-width: 280px;
   margin-top: 15px;
@@ -27,17 +23,17 @@ h3{
   border-radius: 16px;
   background-color: #394652;
 }
-.ligne{
+.ligne {
   background: transparent;
   margin: auto;
   padding: 6px 25px 6px 22px;
 }
-.ligne:hover{
+.ligne:hover {
   cursor: pointer;
-    background: rgb(165, 188, 220);
-    color :black;
-    font-size: 1.3rem;
-  }
-  span{
-    text-align: right;
-  }
+  background: rgb(165, 188, 220);
+  color: black;
+  font-size: 1.3rem;
+}
+span {
+  text-align: right;
+}

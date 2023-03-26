@@ -143,7 +143,7 @@ const SignUp = () => {
               </span>
             </div>
 
-            <div className="mb-4">
+            <div className="mb-3">
               <label htmlFor="signupPwdRepeat" className="form-label">
                 Repeat Password
               </label>
@@ -162,7 +162,7 @@ const SignUp = () => {
               </span>
             </div>
 
-            <button className="btn btn-primary">Submit</button>
+            <button className="btn btn-primary">Valider</button>
           </form>
         </div>
       </div>

@@ -4,7 +4,7 @@ import "../styles/depenses.scss";
 import "../styles/setting.scss";
 import "../styles/app.scss";
 
-import { db } from "./FirebaseConfig";
+import { db } from "./FirebaseFirestore";
 import Modal from "../components/Modale";
 import {
   doc,

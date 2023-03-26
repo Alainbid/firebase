@@ -31,11 +31,13 @@ h4{
 .modal-header,
 .modal-footer {
   background: rgb(64, 70, 94);
-  
+ 
 }
 .modal-header{
   padding: 11px;
   font-size: 1.4rem;
+  display: flex;
+  justify-content: center;
 }
 
 .modal-body { 
