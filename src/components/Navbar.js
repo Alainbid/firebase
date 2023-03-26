@@ -15,9 +15,9 @@ const Navbarre = () => {
         {/* <NavLink to="/SignUpPage" className="navlk">
           Sign_UP
         </NavLink> */}
-        <NavLink to="/Depenses" className="navlk">
+        {/* <NavLink to="/Depenses" className="navlk">
           Dépenses
-        </NavLink>
+        </NavLink> */}
         <NavLink to="/Beneficiaires" className="navlk">
           Bénéficiaires
         </NavLink>
