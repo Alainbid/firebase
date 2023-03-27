@@ -1,8 +1,6 @@
-import React from 'react';
 
 import { initializeApp } from "firebase/app";
-import {  getFirestore } from "@firebase/firestore";
-
+import { getFirestore } from "@firebase/firestore";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 const firebaseConfig = {
@@ -14,17 +12,20 @@ const firebaseConfig = {
   messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGINGSENDERID,
   appId: process.env.REACT_APP_FIREBASE_APPID,
   measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENTID,
+ passwdId : process.env.REACT_APP_PASSWORD,
+ emailId : process.env.REACT_APP_EMAIL,
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
-signInWithEmailAndPassword(auth,"michalsarl@aol.com", "xccobb")
+
+// signInWithEmailAndPassword(auth,process.env.APP_EMAIL, process.env.APP_PASSWORD)
+signInWithEmailAndPassword(auth, firebaseConfig.emailId, firebaseConfig.passwdId)
   .then((userCredential) => {
     // Signed in
     const user = userCredential.user;
-    console.log("logged as : " + user.email + " == ");
-    // ...
+    console.log("logged as : ", user.uid);
   })
   .catch((error) => {
     const errorCode = error.code;
@@ -32,5 +33,5 @@ signInWithEmailAndPassword(auth,"michalsarl@aol.com", "xccobb")
     console.log("code : ", errorCode, "  message ; ", errorMessage);
     return null;
   });
-  
+
 export const db = getFirestore(app);
